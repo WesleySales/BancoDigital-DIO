@@ -29,22 +29,22 @@ public class BancoTestes {
         Cliente henrique = new Cliente();
         Cliente danilo = new Cliente();
 
-        vinicius.setNome("Vinicius Sales");
+        vinicius.setNome("Wesley Sales");
         vinicius.setIdade(22);
 
         danilo.setNome("Danilo BDS");
-        danilo.setIdade(30);
+        danilo.setIdade(20);
 
-        henrique.setNome("Henrique Sales");
-        henrique.setIdade(35);
+        henrique.setNome("Charles Sales");
+        henrique.setIdade(21);
 
         Conta conta1 = new Conta(vinicius);
         Conta conta2 = new Conta(henrique);
         Conta conta3 = new Conta(danilo);
 
-        conta1.depositar(3500);
-        conta2.depositar(3600);
-        conta3.depositar(3000);
+        conta1.depositar(1200);
+        conta2.depositar(1000);
+        conta3.depositar(950);
 
         conta1.exibirConta();
         conta2.exibirConta();
