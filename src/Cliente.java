@@ -1,4 +1,4 @@
-import java.util.Set;
+
 
 public class Cliente {
 
@@ -28,16 +28,9 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public void cadastrarCliente(String nome, int idade){
-        Cliente cliente = new Cliente();
-        this.nome= nome;
-        this.idade= idade;
-    }
     @Override
     public String toString() {
         return
-                "\nnome= " + nome +
-                ", idade= " + idade
-                ;
+                "\nTitular: "+nome+ "\nIdade: "+idade;
     }
 }
