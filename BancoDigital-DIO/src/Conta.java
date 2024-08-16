@@ -22,13 +22,14 @@ public class Conta {
 
 
     public void sacar(double valor){
-        if(saldo>=valor) {
-            saldo -= valor;
-            System.out.println(String.format("%s, Seu saque foi realizado com sucesso.", this.cliente.getNome()));
-        }else{
-            System.out.println("Saldo insuficiente para operação");
-        }
-        }
+        System.out.println(verificarSaldo(valor)==true?(saldo-=valor)+". Saque realizado": "Saldo insuficiente para operação");
+    }
+
+    public boolean verificarSaldo(double valor){
+        if(saldo>=valor){return true;} else{return false;}
+    }
+
+
 
 
     public void depositar(double valor){
@@ -37,26 +38,23 @@ public class Conta {
     }
 
     public void transferir(double valor, Conta contaDestino){
-        if(saldo>=valor) {
+        if(verificarSaldo(valor)==true) {
             saldo-=valor;
             contaDestino.saldo+=valor;
+            System.out.println("Transferência realizada com sucesso!");
         } else {
             System.out.println("Saldo insuficiente para operação");
         }
     }
     public void guardarDinheiro(double valor){
-        if(saldo>=valor) {
+        if(verificarSaldo(valor)==true) {
             saldo-=valor;
             saldoGuardado+=valor;
+            System.out.println("Dinheiro guardado!");
         } else {
             System.out.println("Saldo insuficiente para operação");
         }
     }
-
-
-//    public void exibirTransacoes(){
-//        System.out.println(lista);
-//    }
 
     protected void exibirConta() {
         System.out.println(String.format("Titular: %s", this.cliente.getNome()));

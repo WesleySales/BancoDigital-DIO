@@ -37,17 +37,17 @@ public class BancoTestes {
         conta2.depositar(1000);
         conta3.depositar(950);
 
-        conta1.exibirConta();
-        conta2.exibirConta();
-        conta3.exibirConta();
+        conta1.sacar(1000);
+        conta2.sacar(200);
+        conta3.sacar(15000);
 
         conta1.guardarDinheiro(500);
         conta2.guardarDinheiro(1200);
         conta1.transferir(1200,conta3);
 
-        conta1.exibirConta();
-        conta2.exibirConta();
-        conta3.exibirConta();
+//        conta1.exibirConta();
+//        conta2.exibirConta();
+//        conta3.exibirConta();
 
     }
 }
