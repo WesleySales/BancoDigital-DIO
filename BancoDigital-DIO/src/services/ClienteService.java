@@ -1,21 +1,21 @@
 package services;
 
-import entities.Banco;
 import entities.Cliente;
+import repositories.ClienteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteService {
 
-    Banco banco = new Banco();
+    ClienteRepository repository = new ClienteRepository();
     public void cadastrarCliente(String name, String email, String cpf){
         Cliente cliente = new Cliente(name,email, cpf);
-        banco.getClientesBanco().add(cliente);
+        repository.save(cliente);
     }
     public Cliente findByCPF(String cpf){
-        if(!banco.getClientesBanco().isEmpty()){ //verifica se a lista tem elementos ou esta vazia
-            for(Cliente c: banco.getClientesBanco()){ //cria um objeto que percorre a lista e compara os cpfs
+        if(!repository.findAll().isEmpty()){ //verifica se a lista tem elementos ou esta vazia
+            for(Cliente c: repository.findAll()){ //cria um objeto que percorre a lista e compara os cpfs
                 if(c.getCpf().equalsIgnoreCase(cpf)){
                     return c;
                 }
@@ -23,8 +23,13 @@ public class ClienteService {
         }
         return null;
     }
-    public List<Cliente> findAllCliente(){
-        return banco.getClientesBanco();
+    public Cliente getById(Long id){
+        Cliente cliente = repository.findById(id);
+        return cliente;
+    }
+
+    public List<Cliente> findAll(){
+        return repository.findAll();
     }
 //    public void deleteCliente(String cpf){
 //        Cliente cliente = findByCPF(cpf);

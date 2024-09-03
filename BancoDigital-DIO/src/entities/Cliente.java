@@ -39,10 +39,10 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
+                "   \nid=" + id +
+                "   \nnome='" + nome + '\'' +
+                "   \nemail='" + email + '\'' +
+                "   \ncpf='" + cpf + '\'' +
                 '}';
     }
 }
