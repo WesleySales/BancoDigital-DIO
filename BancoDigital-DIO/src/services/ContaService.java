@@ -1,42 +1,41 @@
 package services;
 
-import entities.Banco;
 import entities.Cliente;
 import entities.Conta;
 
-import java.util.ArrayList;
+import repositories.ContaRepository;
+
 import java.util.List;
 
 public class ContaService {
 
     Conta conta = new Conta();
-    Banco banco = new Banco();
 
-    private ClienteService clienteService = new ClienteService();
-    public void criarConta(String cpf){
-        System.out.println(clienteService.findByCPF(cpf));
-//        System.out.println("Chegou Aqui e o cliente é: "+cliente);
-//        if(cliente!=null){
-//            Conta conta = new Conta(cliente);
-//            contaList.add(conta);
-//        }
-//        else throw new RuntimeException("Não foi possível criar a conta");
+    private ContaRepository contaRepository;
+    private ClienteService clienteService;
+
+    public ContaService(ContaRepository contaRepository, ClienteService clienteService) {
+        this.contaRepository = contaRepository;
+        this.clienteService = clienteService;
+    }
+
+    public void criarConta(Long id){
+        Cliente cliente = clienteService.getById(id);
+        if(cliente!=null){
+            Conta conta = new Conta(cliente);
+            contaRepository.save(conta);
+        }
+        else {
+            throw new RuntimeException("Não foi possível criar a conta");
+        }
     }
     public List<Conta> findAllConta(){
-        return banco.getContasBanco();
+        return contaRepository.findAll();
     }
 
-    public Conta findByNumeroConta(int numConta){
-        if(!banco.getContasBanco().isEmpty()){ //verifica se a lista tem elementos ou esta vazia
-            for(Conta c: banco.getContasBanco()){ //cria um objeto que percorre a lista e compara os cpfs
-                if(c.getNumeroDaConta()==numConta){
-                    return c;
-                }
-            }
-        }
-        return null;
+    public Conta getByNumeroConta(int numConta){
+        return contaRepository.findByConta(numConta);
     }
-
 
     public void sacar(Conta conta, double valor){
         verificarSaldo(conta,valor);
@@ -61,7 +60,6 @@ public class ContaService {
 
     }
     public void guardarDinheiro(int numConta,double valor){
-
         verificarSaldo(conta,valor);
         conta.setSaldo(conta.getSaldo()-valor);
         conta.setSaldoGuardado(conta.getSaldoGuardado()+valor);

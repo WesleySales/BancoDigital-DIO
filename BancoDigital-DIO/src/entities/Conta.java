@@ -46,12 +46,12 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Conta{" +
-                "agencia=" + agencia +
-                ", numeroDaConta=" + numeroDaConta +
-                ", saldo=" + saldo +
-                ", saldoGuardado=" + saldoGuardado +
-                ", cliente=" + cliente +
-                '}';
+        return
+                "\n\nagencia=" + agencia +
+                "\nnumeroDaConta=" + numeroDaConta +
+                "\nsaldo=" + saldo +
+                "\nsaldoGuardado=" + saldoGuardado +
+                "\ncliente=" + cliente
+                ;
     }
 }
